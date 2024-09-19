@@ -1,0 +1,27 @@
+server:
+  port: 9000
+
+logging:
+  level:
+    org.springframework.security: trace
+
+spring:
+  application:
+    name: spring-oauth-server
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          oidc-client:
+            registration:
+              client-id: "device-client-id"
+              client-secret: "{noop}secret"
+              client-authentication-methods:
+                - "none"
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "urn:ietf:params:oauth:grant-type:device_code"
+              scopes:
+                - "message.read"
+                - "message.write"
+            require-authorization-consent: true
